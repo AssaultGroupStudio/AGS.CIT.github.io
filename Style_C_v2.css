@@ -407,22 +407,26 @@ body {
     padding-top: 3px;
 
 }
-.name-desc a, .name-desc-2 a, .name-desc-3 a {
+.showBtn {
     border: 1px solid gold;
     padding: 1px 8px;
     border-radius: 8px;
     color: rgb(49, 48, 48);
-    background-color: gold;
-    text-decoration: none;
+    background-color: rgb(255, 222, 36);
     font-weight: 600;
     letter-spacing: 0.3px;
     font-size: 17px;
+    cursor: pointer;
 }
+.showBtn:hover {
+    filter: brightness(108%);
+}
+/*
 .name-desc a:hover, .name-desc-2 a:hover, .name-desc-3 a:hover {
     filter: brightness(106%);
     color: rgb(0, 0, 0);
     border: 3px solid rgb(248, 214, 44);
-}
+}*/
 
 .name-desc:hover,.name-desc-2:hover, .name-desc-3:hover {
     box-shadow: 0 0 12px 0px rgb(214, 160, 223);
@@ -447,6 +451,170 @@ body {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
+/* ---------------   Modal Window   ---------------  */
+
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.modal__box {
+    position: relative;
+    max-width: 350px;
+    padding: 30px 33px 23px;
+    z-index: 1;
+    margin: 30px 15px;
+    background-color: white;
+    box-shadow: 0px 0px 17px -7px rgba(39, 69, 92, 0.5);
+    transform: scale(0.2);
+    transition: transform 0.8s;
+    border-radius: 13px;
+}
+
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal.open .modal__box {
+    transform: scale(1);
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.modal__close-btn svg path {
+    transition: fill 0.4s;
+    fill: #555;
+
+}/*
+.modal__close-btn:hover svg path {
+    fill: rgb(247, 116, 116);
+}*/
+.modal__close-btn:hover svg path {
+    fill: #E70722;
+}
+
+
+.svg {
+    text-align: center;
+}
+
+.bonus-block {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+    padding: 3px;
+    margin: 8px;
+}
+
+#Course_group {
+    width: 100%;
+    max-width: 310px;
+    padding: 5px;
+    margin: 0px 8px 8px;
+}
+
+button#offer-btn {
+    width: 100%;
+    max-width: 140px;
+    padding: 5px 45px;
+    margin: 8px 8px 12px;
+    display: inline-block;
+    text-decoration: none;
+    color:#fff;
+    border: 0px solid #333;
+    font-size: 14px;
+    font-weight: 600;
+    background: #333;
+    position: relative;
+    cursor: pointer;
+    transition: 0.8s;
+    text-align: center;
+}
+button#offer-btn:hover {
+    color: #000;
+    background-color: transparent;
+}
+
+#offer-btn::after,
+#offer-btn::before {
+  border: 1px solid #000;
+  content: "";
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: transform 0.6s ease;
+}
+
+#offer-btn:hover::after {
+  transform: translate(-5px, -3px);
+}
+
+#offer-btn:hover::before {
+  transform: translate(5px, 3px);
+}
+
+
+option {
+    color: #777;
+}
+
+.submit-pic {
+    width: 220px;
+    height: auto;
+    text-align: center;
+}
+
+@media (max-width: 440px) {
+    .modal__box {
+        padding: 25px 25px 23px;
+        margin: 0;
+    }
+
+}
+
+@media (max-width: 736px) {
+    
+    .showBtn {
+        position: absolute;
+        left: 37%;
+        bottom: 1%;
+    }
+}
+
+
+/* ------------------------------- */
+
 .cert-wrap {
     width: 65%;
     margin: auto;
@@ -651,6 +819,8 @@ nav .fa{
     }
     .name-desc p, .name-desc-2 p, .name-desc-3 p {
         font-size: 14px;
+        padding-top: 0px;
+        transform: translateY(-3px)
     }
   
     .cert-text {
@@ -1047,8 +1217,8 @@ p {
     justify-content: center;
     grid-auto-flow: column;
     grid-gap: 3px;
-
 } 
+
 .exp-2 {
     padding-bottom: 155px;
     display: grid;
@@ -1060,6 +1230,7 @@ p {
 } 
 .exp-1 img, .exp-2 img {
     object-fit: contain;
+    color: rgb(217, 215, 215);
 }
 
 /*------  Footer  -------*/
